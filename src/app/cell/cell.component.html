@@ -1,0 +1,13 @@
+<button (click)="active = !active">
+  <div *ngIf="active ;else elseBlock">
+    <div class="cell active">
+      
+    </div>
+  </div>
+
+  <ng-template #elseBlock>
+    <div class="cell idle">
+      
+    </div>
+  </ng-template>
+</button>

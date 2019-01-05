@@ -1,0 +1,25 @@
+button {
+    margin: 0px;
+    padding: 0px;
+    background: none;
+    border: none;
+}
+
+.cell {
+    margin: 0px;
+    padding: 0px;
+    width: 20px;
+    height: 20px;
+
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+}
+
+.active {
+    background-color: green;
+}
+
+.idle {
+    background-color: white;
+}
