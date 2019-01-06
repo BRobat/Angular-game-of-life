@@ -1,5 +1,6 @@
 <button (click)="play()">play</button>
 
+
 <div class="board" *ngFor="let i of rows">
     <div class="board" *ngFor="let j of columns">
         <app-cell [active]="board[i][j]" (click)="checkCell(i,j)"></app-cell>

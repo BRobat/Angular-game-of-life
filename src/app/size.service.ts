@@ -5,10 +5,10 @@ import { Injectable } from '@angular/core';
 })
 export class SizeService {
 
-  board = [];
+  table = [];
 
   width = 100;
-  heigth = 100;
+  heigth = 10;
 
   active = false;
 
@@ -21,8 +21,8 @@ export class SizeService {
       for (let j = 0; j < this.heigth; j++) {
         row.push(false);
       }
-      this.board.push(row);
+      this.table.push(row);
     }
-    return this.board;
+    return this.table;
   }
 }
