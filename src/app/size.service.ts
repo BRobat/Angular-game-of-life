@@ -7,8 +7,8 @@ export class SizeService {
 
   table = [];
 
-  width = 100;
-  heigth = 10;
+  width = 30;
+  heigth = 30;
 
   active = false;
 
