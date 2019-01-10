@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InterfaceComponent implements OnInit {
 
+  displayMenu: true;
+
   constructor() { }
 
   ngOnInit() {

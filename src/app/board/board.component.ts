@@ -16,7 +16,13 @@ export class BoardComponent {
 
   a: number;
 
-  gameActive = false;
+  minBorn: number;
+  maxBorn: number;
+
+  minLive: number;
+  maxLive: number;
+
+  gameActive = true;
 
   constructor(private sizeService: SizeService) {
     this.board = this.sizeService.getBoard();
@@ -26,31 +32,34 @@ export class BoardComponent {
 
     //console.log(this.rows);
     //console.log(this.columns);
+
+    this.randomize();
+
      setInterval(() => {
        if(this.gameActive) {
          this.updateCells()
        }
-     }, 100)
+     }, 250);
    }
 
   updateCells() {
-    let astral = [];
+    let astral = []
     
     for(let i = 0; i < this.rows.length; i++) {
       for(let j = 0; j < this.columns.length; j++) {
         this.a = this.noActvCells(i,j);
         
-        if((this.board[i][j] == false) && (this.a == 3)) {
+        if((this.board[i][j] == false) && (this.a <=3) && (this.a >= 3)) {
           astral.push([i,j]);
-          console.log("breed",i,j,this.a);
+          //console.log("breed",i,j,this.a);
         } 
-        else if ((this.board[i][j] == true) && (this.a == 4) || (this.a == 3)){
+        else if ((this.board[i][j] == true) && (this.a <= 4) && (this.a >= 3)){
           astral.push([i,j]);
-          console.log("stagnation",i,j,this.a);
+          //console.log("stagnation",i,j,this.a);
         } 
         
         else if (this.board[i][j] == true){
-          console.log("died",i,j,this.a);
+          //console.log("died",i,j,this.a);
         }
       }
     }
@@ -110,8 +119,6 @@ export class BoardComponent {
     console.log(this.noActvCells(i,j),i,j);
   }
 
-  play(){
-    this.gameActive = !this.gameActive;
-  }
+
 
 }

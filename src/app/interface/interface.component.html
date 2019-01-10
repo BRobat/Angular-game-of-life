@@ -1,3 +1,30 @@
-<p>
-  interface works!
-</p>
+<div>
+  <button (click)="displayMenu = !displayMenu">Show menu</button>
+</div>
+<div *ngIf="displayMenu">
+  Game Of Life
+  <div class="inpt">
+    <label>Cells kept alive</label>
+    <input type="number">
+    <label>/</label>
+    <input type="number">
+  </div>
+  <div class="inpt">
+    <label>Cells born</label>
+    <input type="number">
+    <label>/</label>
+    <input type="number">
+  </div>
+  <div class="inpt">
+    <label>Board size</label>
+    <input type="number">
+    <label>x</label>
+    <input type="number">
+  </div>
+  <div class="inpt">
+    <label>simulation speed</label>
+    <input type="number">
+  </div>
+  <button></button>
+
+</div>
