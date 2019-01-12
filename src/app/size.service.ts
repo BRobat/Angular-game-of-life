@@ -7,10 +7,18 @@ export class SizeService {
 
   table = [];
 
-  width = 120;
-  heigth = 120;
+  width = 100;
+  heigth = 100;
 
   active = false;
+
+  minBorn = 3;
+  maxBorn = 3;
+
+  minLive = 2;
+  maxLive = 3;
+
+  tempo = 500;
 
 
   constructor() { }

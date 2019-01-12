@@ -22,7 +22,9 @@ export class BoardComponent {
   minLive: number;
   maxLive: number;
 
-  gameActive = true;
+  tempo: number;
+
+  gameActive: boolean;
 
   constructor(private sizeService: SizeService) {
     this.board = this.sizeService.getBoard();
@@ -30,16 +32,31 @@ export class BoardComponent {
     this.rows = Array(this.board[0].length).fill(0,0,this.board.length).map((x,i) => i);
     this.columns = Array(this.board.length).fill(0,0,this.board.length).map((x,i) => i);
 
+    this.minBorn = this.sizeService.minBorn;
+    this.maxBorn = this.sizeService.maxBorn;
+
+    this.minLive = this.sizeService.minLive + 1;
+    this.maxLive = this.sizeService.maxLive + 1;
+
+    this.tempo = this.sizeService.tempo;
+
+    this.gameActive = this.sizeService.active;
     //console.log(this.rows);
     //console.log(this.columns);
 
-    this.randomize();
+    this.randomize(0.1);
 
      setInterval(() => {
+      this.gameActive = this.sizeService.active;
+      this.tempo = this.sizeService.tempo;
+      this.minLive = this.sizeService.minLive + 1;
+      this.maxLive = this.sizeService.maxLive + 1;
+      this.minBorn = this.sizeService.minBorn;
+      this.maxBorn = this.sizeService.maxBorn;
        if(this.gameActive) {
          this.updateCells()
        }
-     }, 250);
+     }, this.tempo);
    }
 
   updateCells() {
@@ -49,11 +66,11 @@ export class BoardComponent {
       for(let j = 0; j < this.columns.length; j++) {
         this.a = this.noActvCells(i,j);
         
-        if((this.board[i][j] == false) && (this.a <=3) && (this.a >= 3)) {
+        if((this.board[i][j] == false) && (this.a <= this.minBorn) && (this.a >= this.maxBorn)) {
           astral.push([i,j]);
           //console.log("breed",i,j,this.a);
         } 
-        else if ((this.board[i][j] == true) && (this.a <= 4) && (this.a >= 3)){
+        else if ((this.board[i][j] == true) && (this.a <= this.maxLive) && (this.a >= this.minLive)){
           astral.push([i,j]);
           //console.log("stagnation",i,j,this.a);
         } 
@@ -69,7 +86,7 @@ export class BoardComponent {
     for(let i in astral) {
       this.board[astral[i][0]][astral[i][1]] = true;
     }
-    
+
   }
 
   noActvCells(x,y) {
@@ -102,11 +119,11 @@ export class BoardComponent {
     }
   }
 
-  randomize() {
+  randomize(rand: number) {
     for(let i = 0; i < this.rows.length; i++) {
       for(let j = 0; j < this.columns.length; j++) {
         let w = Math.random();
-        if (w > 0.5) {
+        if (w < rand) {
           this.board[i][j] = true;
         }
       }
@@ -118,7 +135,4 @@ export class BoardComponent {
     this.board[i][j] = !this.board[i][j];
     console.log(this.noActvCells(i,j),i,j);
   }
-
-
-
 }

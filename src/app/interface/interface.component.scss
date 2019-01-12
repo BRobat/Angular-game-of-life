@@ -1,12 +1,27 @@
-body {
-    padding: 20px;
+.content {
+    color: white;
     background-color: rgba(0, 0, 0, 0.5);
-    filter: blur(20px);
 
-    border-radius: 10px;
-    
+
+    border-radius: 15px;
 }
 
-div {
-    color: white;
+.big-lbl {
+    width: 150px;
+}
+
+.sml-lbl {
+    width: 5px;
+    padding: 0px 10px 0px 10px;
+}
+
+.inpt {
+    display: flex;
+    justify-content: space-between;
+    
+    padding: 10px;
+}
+
+.btn {
+    
 }
