@@ -1,12 +1,12 @@
 import { SizeService } from './../size.service';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss']
 })
-export class BoardComponent {
+export class BoardComponent implements OnDestroy {
 
   board: any[];
   astral: any[];
@@ -44,8 +44,6 @@ export class BoardComponent {
     //console.log(this.rows);
     //console.log(this.columns);
 
-    this.randomize(0.1);
-
      setInterval(() => {
       this.gameActive = this.sizeService.active;
       this.tempo = this.sizeService.tempo;
@@ -59,6 +57,12 @@ export class BoardComponent {
      }, this.tempo);
    }
 
+   ngOnDestroy(): void {
+     //Called once, before the instance is destroyed.
+     //Add 'implements OnDestroy' to the class.
+     
+   }
+
   updateCells() {
     let astral = []
     
@@ -66,7 +70,7 @@ export class BoardComponent {
       for(let j = 0; j < this.columns.length; j++) {
         this.a = this.noActvCells(i,j);
         
-        if((this.board[i][j] == false) && (this.a <= this.minBorn) && (this.a >= this.maxBorn)) {
+        if((this.board[i][j] == false) && (this.a >= this.minBorn) && (this.a <= this.maxBorn)) {
           astral.push([i,j]);
           //console.log("breed",i,j,this.a);
         } 
@@ -86,7 +90,6 @@ export class BoardComponent {
     for(let i in astral) {
       this.board[astral[i][0]][astral[i][1]] = true;
     }
-
   }
 
   noActvCells(x,y) {
@@ -125,10 +128,11 @@ export class BoardComponent {
         let w = Math.random();
         if (w < rand) {
           this.board[i][j] = true;
+        } else {
+          this.board[i][j] = false;
         }
       }
     }
-
   }
 
   checkCell(i,j) {

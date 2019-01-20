@@ -1,40 +1,42 @@
 <div class="content">
   <div>
-    <button (click)="displayMenu = !displayMenu">Show menu</button>
+    <button class="btn" (click)="displayMenu = !displayMenu">Show menu</button>
   </div>
+
   <div *ngIf="displayMenu">
     <h1>
       Game Of Life
     </h1>
     <div class="inpt">
       <label class="big-lbl">Cells kept alive: </label>
-      <input type="number">
+      <input type="number" required value="{{minLive}}" (keyup)="setMinCellsAlive($event)">
       <label class="sml-lbl">/</label>
-      <input type="number">
+      <input type="number" required value="{{maxLive}}" (keyup)="setMaxCellsAlive($event)">
     </div>
     <div class="inpt">
       <label class="big-lbl">Cells born: </label>
-      <input type="number">
+      <input type="number" required value="{{minBorn}}" (keyup)="setMinCellsBorn($event)">
       <label class="sml-lbl">/</label>
-      <input type="number">
+      <input type="number" required value="{{maxBorn}}" (keyup)="setMaxCellsBorn($event)">
+    </div>
+    <div class="inpt">
+      <button class="btn btn-clear">reload</button>
     </div>
     <div class="inpt">
       <label class="big-lbl">Board size: </label>
-      <input type="number">
+      <input type="number" required>
       <label class="sml-lbl">x</label>
-      <input type="number">
+      <input type="number" required>
     </div>
     <div class="inpt">
       <label class="big-lbl">Simulation speed: </label>
-      <input type="number" value="1000" (keyup)="setSimSpeed($event)">
+      <input type="number" required value="1000" (keyup)="setSimSpeed(event)">
+    </div>
+    <div class="inpt">
+
     </div>
     <div class="inpt">
       <button class="btn" (click)="start()">start</button>
-    </div>
-    <div class="inpt">
-      <button class="btn">clear</button>
-    </div>
-    <div class="inpt">
       <button class="btn">random</button>
     </div>
   </div>

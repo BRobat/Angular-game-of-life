@@ -1,9 +1,22 @@
+input {
+    padding: 5px;
+    border-radius: 0px;
+    border-width: 2px;
+    border-color: white;
+    background-color: rgba(0, 0, 0, 0.0);
+    color: white;
+
+    font-size: 16px;
+}
+
 .content {
+    padding: 5px;
+    
     color: white;
     background-color: rgba(0, 0, 0, 0.5);
 
 
-    border-radius: 15px;
+    border-radius: 5px;
 }
 
 .big-lbl {
@@ -23,5 +36,13 @@
 }
 
 .btn {
+    padding: 10px 20px;
+    border-radius: 0px;
+    border-width: 2px;
+    border-color: white;
+    background-color: rgba(0, 0, 0, 0.0);
+    color: white;
+
+    font-size: 16px;
     
 }
