@@ -27,6 +27,7 @@ export class BoardComponent implements OnDestroy {
   gameActive: boolean;
 
   constructor(private sizeService: SizeService) {
+    console.log("dwa");
     this.board = this.sizeService.getBoard();
 
     this.rows = Array(this.board[0].length).fill(0,0,this.board.length).map((x,i) => i);
@@ -46,13 +47,16 @@ export class BoardComponent implements OnDestroy {
 
      setInterval(() => {
       this.gameActive = this.sizeService.active;
-      this.tempo = this.sizeService.tempo;
       this.minLive = this.sizeService.minLive + 1;
       this.maxLive = this.sizeService.maxLive + 1;
       this.minBorn = this.sizeService.minBorn;
       this.maxBorn = this.sizeService.maxBorn;
        if(this.gameActive) {
          this.updateCells()
+       };
+       if(this.sizeService.randomness) {
+         this.randomize(0.5);
+         this.sizeService.randomness = false;
        }
      }, this.tempo);
    }

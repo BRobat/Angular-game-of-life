@@ -27,6 +27,8 @@ export class InterfaceComponent {
   constructor(private sizeService: SizeService) {
       this.active = this.sizeService.active;
       this.tempo = this.sizeService.tempo;
+      this.heigth = this.sizeService.heigth;
+      this.width = this.sizeService.width;
       this.minLive = this.sizeService.minLive;
       this.maxLive = this.sizeService.maxLive;
       this.minBorn = this.sizeService.minBorn;
@@ -35,12 +37,16 @@ export class InterfaceComponent {
 
 
   start() {
-    console.log("elo")
-    this.sizeService.active = !this.sizeService.active;
+    this.active = !this.active;
+    this.sizeService.active = this.active;
   }
 
   randomize() {
+    this.sizeService.randomness = true;
+  }
 
+  clear() {
+    this.sizeService.alive = false;
   }
 
   setSimSpeed(event: any) {
@@ -68,6 +74,16 @@ export class InterfaceComponent {
   setMaxCellsAlive(event: any) {
     this.maxLive = event.target.value;
     this.sizeService.maxLive = event.target.value;
+  }
+
+  setWidth(event: any) {
+    this.width = event.target.value;
+    this.sizeService.width = event.target.value;
+  }
+
+  setHeigth(event: any) {
+    this.heigth = event.target.value;
+    this.sizeService.heigth = event.target.value;
   }
   
 }

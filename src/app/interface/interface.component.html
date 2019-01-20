@@ -1,6 +1,8 @@
 <div class="content">
   <div>
     <button class="btn" (click)="displayMenu = !displayMenu">Show menu</button>
+
+
   </div>
 
   <div *ngIf="displayMenu">
@@ -20,24 +22,29 @@
       <input type="number" required value="{{maxBorn}}" (keyup)="setMaxCellsBorn($event)">
     </div>
     <div class="inpt">
-      <button class="btn btn-clear">reload</button>
+      <button class="btn btn-clear" (click)="clear()">reload</button>
     </div>
     <div class="inpt">
       <label class="big-lbl">Board size: </label>
-      <input type="number" required>
+      <input type="number" required value="{{width}}" (keyup)="setWidth($event)">
       <label class="sml-lbl">x</label>
-      <input type="number" required>
+      <input type="number" required value="{{heigth}}" (keyup)="setHeigth($event)">
     </div>
     <div class="inpt">
       <label class="big-lbl">Simulation speed: </label>
-      <input type="number" required value="1000" (keyup)="setSimSpeed(event)">
+      <input type="number" required value="{{tempo}}" (keyup)="setSimSpeed(event)">
     </div>
     <div class="inpt">
 
     </div>
     <div class="inpt">
-      <button class="btn" (click)="start()">start</button>
-      <button class="btn">random</button>
+      <div *ngIf="active ;else elseBlock">
+        <button class="btn" (click)="start()">stop</button>
+      </div>
+      <ng-template #elseBlock>
+        <button class="btn" (click)="start()">start</button>
+      </ng-template>
+      <button class="btn" (click)="randomize()">random</button>
     </div>
   </div>
 </div>

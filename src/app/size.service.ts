@@ -7,10 +7,11 @@ export class SizeService {
 
   table = [];
 
-  width = 100;
-  heigth = 100;
+  width = 25;
+  heigth = 25;
 
   active = false;
+  alive = true;
 
   minBorn = 3;
   maxBorn = 3;
@@ -20,10 +21,12 @@ export class SizeService {
 
   tempo = 500;
 
+  randomness = false;
 
   constructor() { }
 
   getBoard() {
+    this.table = []
     for(let i = 0; i < this.width; i++) {
       let row = [];
       for (let j = 0; j < this.heigth; j++) {
