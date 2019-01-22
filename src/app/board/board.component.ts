@@ -42,6 +42,8 @@ export class BoardComponent implements OnDestroy {
     this.tempo = this.sizeService.tempo;
 
     this.gameActive = this.sizeService.active;
+
+    this.randomize(0.5);
     //console.log(this.rows);
     //console.log(this.columns);
 

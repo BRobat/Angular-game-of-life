@@ -6,3 +6,33 @@
     margin: 0px;
     background-color: black;
 }
+
+button {
+    margin: 0px;
+    padding: 0px;
+    background: none;
+    border: none;
+}
+
+.cell {
+    margin: 0px;
+    padding: 0px;
+    width: 50px;
+    height: 50px;
+
+    border-style: solid;
+    border-width: 0px;
+    border-color: grey;
+    border-radius: 50%;
+}
+
+.active {
+    // background-color: rgb(44, 218, 44);
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-image: url(../../assets/backgrounds/greendot.jpeg);
+}
+
+.idle {
+    // background-color: rgba(50, 50, 50, 0.5);
+}

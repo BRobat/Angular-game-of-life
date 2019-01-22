@@ -1,8 +1,20 @@
-
 <div class="plane">
     <div class="board" *ngFor="let i of rows">
         <div class="board" *ngFor="let j of columns">
-            <app-cell [active]="board[i][j]" (click)="checkCell(i,j)"></app-cell>
+            <button></button>
+
+            <div *ngIf="board[i][j] ;else elseBlock">
+                <div class="cell active" (click)='checkCell(i,j)'>
+
+                </div>
+            </div>
+
+            <ng-template #elseBlock>
+                <div class="cell idle" (click)='checkCell(i,j)'>
+
+                </div>
+            </ng-template>
+
         </div>
     </div>
 </div>
