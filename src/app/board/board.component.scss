@@ -36,3 +36,11 @@ button {
 .idle {
     // background-color: rgba(50, 50, 50, 0.5);
 }
+
+
+@media (max-width: 414px) {
+    .cell {
+        width: 30px;
+        height: 30px;
+    }
+}

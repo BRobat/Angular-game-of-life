@@ -7,35 +7,33 @@
 
   <div *ngIf="displayMenu">
     <h1>
-      Game Of Life
+      Game of Life
     </h1>
     <div class="inpt">
       <label class="big-lbl">Cells kept alive: </label>
-      <input type="number" required value="{{minLive}}" (keyup)="setMinCellsAlive($event)">
+      <input type="range" min="0" max="8" required value="{{minLive}}" (click)="setMinCellsAlive($event)">
+      <label class="sml-lbl">{{minLive}}</label>
       <label class="sml-lbl">/</label>
-      <input type="number" required value="{{maxLive}}" (keyup)="setMaxCellsAlive($event)">
+      <label class="sml-lbl">{{maxLive}}</label>
+      <input type="range" min="0" max="8" required value="{{maxLive}}" (click)="setMaxCellsAlive($event)">
     </div>
     <div class="inpt">
       <label class="big-lbl">Cells born: </label>
-      <input type="number" required value="{{minBorn}}" (keyup)="setMinCellsBorn($event)">
+      <input type="range" min="0" max="8" required value="{{minBorn}}" (click)="setMinCellsBorn($event)">
+      <label class="sml-lbl">{{minBorn}}</label>
       <label class="sml-lbl">/</label>
-      <input type="number" required value="{{maxBorn}}" (keyup)="setMaxCellsBorn($event)">
+      <label class="sml-lbl">{{maxBorn}}</label>
+      <input type="range" min="0" max="8" required value="{{maxBorn}}" (click)="setMaxCellsBorn($event)">
     </div>
     <div class="inpt">
       <button class="btn btn-clear" (click)="clear()">reload</button>
     </div>
     <div class="inpt">
       <label class="big-lbl">Board size: </label>
-      <input type="number" required value="{{width}}" (keyup)="setWidth($event)">
-      <label class="sml-lbl">x</label>
-      <input type="number" required value="{{heigth}}" (keyup)="setHeigth($event)">
-    </div>
-    <div class="inpt">
-      <label class="big-lbl">Simulation speed: </label>
-      <input type="number" required value="{{tempo}}" (keyup)="setSimSpeed(event)">
-    </div>
-    <div class="inpt">
-
+      <input type="range" min="5" max="30" required value="{{width}}" (click)="setSize($event)">
+      <label class="sml-lbl">{{width}}</label>
+      <label class="sml-lbl">X</label>
+      <label class="sml-lbl">{{width}}</label>
     </div>
     <div class="inpt">
       <div *ngIf="active ;else elseBlock">

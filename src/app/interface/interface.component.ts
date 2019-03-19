@@ -15,8 +15,8 @@ export class InterfaceComponent {
 
   active: boolean;
 
-  minBorn: number;
-  maxBorn: number;
+  minBorn = 0;
+  maxBorn = 0;
 
   minLive : number;
   maxLive: number;
@@ -57,6 +57,7 @@ export class InterfaceComponent {
   }
 
   setMinCellsBorn(event: any) {
+    console.log(this.minBorn);
     this.minBorn = event.target.value;
     this.sizeService.minBorn = event.target.value;
   }
@@ -76,9 +77,11 @@ export class InterfaceComponent {
     this.sizeService.maxLive = event.target.value;
   }
 
-  setWidth(event: any) {
+  setSize(event: any) {
     this.width = event.target.value;
+    this.heigth = event.target.value;
     this.sizeService.width = event.target.value;
+    this.sizeService.heigth = event.target.value;
   }
 
   setHeigth(event: any) {

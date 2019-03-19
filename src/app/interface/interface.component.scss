@@ -15,7 +15,6 @@ input {
     color: white;
     background-color: rgba(0, 0, 0, 0.5);
 
-
     border-radius: 5px;
 }
 
@@ -45,4 +44,24 @@ input {
 
     font-size: 16px;
     
+}
+
+@media (max-width: 414px) {
+    input {
+        font-size: 12px;
+        width: 50px;
+    }
+
+    .inpt {
+        padding: 5px;
+
+    }
+
+    .big-lbl {
+        width: 100px;
+    }
+
+    .btn {
+        font-size: 14px;
+    }
 }

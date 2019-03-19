@@ -27,7 +27,7 @@ export class BoardComponent implements OnDestroy {
   gameActive: boolean;
 
   constructor(private sizeService: SizeService) {
-    console.log("dwa");
+    console.log("dwa"); // i love my debug xd
     this.board = this.sizeService.getBoard();
 
     this.rows = Array(this.board[0].length).fill(0,0,this.board.length).map((x,i) => i);
@@ -36,8 +36,8 @@ export class BoardComponent implements OnDestroy {
     this.minBorn = this.sizeService.minBorn;
     this.maxBorn = this.sizeService.maxBorn;
 
-    this.minLive = this.sizeService.minLive + 1;
-    this.maxLive = this.sizeService.maxLive + 1;
+    this.minLive = Number(this.sizeService.minLive) + 1;
+    this.maxLive = Number(this.sizeService.maxLive) + 1;
 
     this.tempo = this.sizeService.tempo;
 
@@ -49,10 +49,13 @@ export class BoardComponent implements OnDestroy {
 
      setInterval(() => {
       this.gameActive = this.sizeService.active;
-      this.minLive = this.sizeService.minLive + 1;
-      this.maxLive = this.sizeService.maxLive + 1;
+      this.minLive = Number(this.sizeService.minLive) + 1;
+      this.maxLive = Number(this.sizeService.maxLive) + 1;
       this.minBorn = this.sizeService.minBorn;
       this.maxBorn = this.sizeService.maxBorn;
+
+      console.log("minlive: ",this.minLive, "maxLive: ", this.maxLive, "minBorn: ", this.minBorn, "maxBorn: ", this.maxBorn);
+
        if(this.gameActive) {
          this.updateCells()
        };
@@ -70,7 +73,8 @@ export class BoardComponent implements OnDestroy {
    }
 
   updateCells() {
-    let astral = []
+    
+    let astral = [];
     
     for(let i = 0; i < this.rows.length; i++) {
       for(let j = 0; j < this.columns.length; j++) {
@@ -120,25 +124,18 @@ export class BoardComponent implements OnDestroy {
   }
 
   clearBoard() {
-
-    for(let i = 0; i < this.rows.length; i++) {
-      for(let j = 0; j < this.columns.length; j++) {
-        this.board[i][j] = false;
-      }
-    }
+    this.board = this.board.map( (b) => {
+      return b.map(() => false);
+    });
   }
 
   randomize(rand: number) {
-    for(let i = 0; i < this.rows.length; i++) {
-      for(let j = 0; j < this.columns.length; j++) {
-        let w = Math.random();
-        if (w < rand) {
-          this.board[i][j] = true;
-        } else {
-          this.board[i][j] = false;
-        }
-      }
-    }
+    this.board = this.board.map( (b) => {
+      return b.map( () => {
+        if (Math.random() < rand) { return true }
+        else { return false }
+      })
+    })
   }
 
   checkCell(i,j) {
